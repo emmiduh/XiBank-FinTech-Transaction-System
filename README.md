@@ -1,4 +1,4 @@
-# Polyglot FinTech Transaction System
+# XiBank FinTech Transaction System
 
 ![Build Status](https://img.shields.io/badge/build-passing-brightgreen) ![Docker](https://img.shields.io/badge/container-docker-blue) ![Kubernetes Ready](https://img.shields.io/badge/orchestration-k8s-326ce5)
 
@@ -29,4 +29,6 @@ polyglot-fintech/
 ├── service-ledger-go/     # Go Transaction Microservice
 ├── service-fraud-python/  # Python Fraud Detection Microservice
 ├── docker-compose.yml     # Local Orchestration
+ ^t^| ^t^` ^t^` kubernetes/            # Kubernetes Manifests
+ ^t^| ^t^` ^t^` terraform/             # Infrastructure as Code (IaC)
 └── README.md

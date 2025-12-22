@@ -7,7 +7,7 @@ import (
 	"ledger-service/auth"
 )
 
-from JWTAuth(next http.Handler) http.Handler {
+func JWTAuth(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request){
 		header := r.Header.Get("Authorization")
 		if header == "" {
@@ -23,6 +23,6 @@ from JWTAuth(next http.Handler) http.Handler {
 		}
 
 		r.Header.Set("X-User-ID", claims["userId"].(string))
-		next.ServeHTTP(w, r))
+		next.ServeHTTP(w, r)
 	})
 }

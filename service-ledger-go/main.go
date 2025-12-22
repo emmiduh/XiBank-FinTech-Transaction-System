@@ -7,7 +7,7 @@ import (
 )
 
 func main() {
-	http.HnaldeFunc("/transaction", handlers.HandlerTransaction)
-	log.Println("Ledeger service running on port 4000")
+	http.HandleFunc("/transaction", handlers.HandleTransaction)
+	log.Println("Ledger service running on port 4000")
 	log.Fatal(http.ListenAndServe(":4000", nil))
 }

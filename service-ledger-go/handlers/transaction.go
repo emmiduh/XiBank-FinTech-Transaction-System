@@ -5,11 +5,11 @@ import (
 )
 
 type Transaction struct {
-	UserID string `json":user_id"`
+	UserID string `json:"user_id"`
 	Amount float64 `json:"amount"`
 }
 
-funct HandleTransaction(w http.ResponseWriter, r *http.Request) {
+func HandleTransaction(w http.ResponseWriter, r *http.Request) {
 	var tx Transaction
 	json.NewDecoder(r.Body).Decode(&tx)
 

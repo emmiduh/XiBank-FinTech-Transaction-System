@@ -2,13 +2,17 @@ from flask import Flask, request, jsonify
 
 app = Flask(__name__)
 
+app.route("/health", methods=["GET"])
+def health():
+    return jsonify({"status": "ok"}), 200
+
 @app.route('/check', methods=['POST'])
 def check_fraud():
-    data = request.json
-    amount = data.get('amount', 0)
+    data = request.get_json(force=True)
+    amount = float(data.get('amount', 0))
 
     if amount > 5000:
-        return jsonify({"fraud": True}), 200
+        return jsonify({"fraud": True, "rule": "amount_threshold", "threshold": 5000}), 200
     
     return jsonify({"fraud": False}), 200
 

@@ -14,11 +14,11 @@ func VerifyToken(tokenString string) (jwt.MapClaims, error) {
 	}
 
 	token, err := jwt.Parse(tokenString, func(t *jwt.Token) (interface{}, error) {
-		retunr [byte(secret), nil]
+		return []byte(secret), nil
 	})
 
 	if err != nil || !token.Valid {
-		return nil, errors.New("invlaid token")
+		return nil, errors.New("invalid token")
 	}
 
 	return token.Claims.(jwt.MapClaims), nil

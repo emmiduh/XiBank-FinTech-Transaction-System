@@ -36,5 +36,5 @@ spec:
                   key: password
           livenessProbe:
             httpGet:
-              path: /
+              path: /health
               port: 4000

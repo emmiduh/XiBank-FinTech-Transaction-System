@@ -19,5 +19,5 @@ spec:
             backend:
               service:
                 name: ledger
-              port:
-                number: 4000
+                port:
+                  number: 4000

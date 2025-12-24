@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: xibank-ingress
+  namespace: xibank
+spec:
+  rules:
+    - http:
+        paths:
+          - path: /login
+            pathType: Prefix
+            backend:
+              service:
+                name: auth
+                port:
+                number: 3000
+          - path: /transaction
+            pathType: Prefix
+            backend:
+              service:
+                name: ledger
+              port:
+                number: 4000

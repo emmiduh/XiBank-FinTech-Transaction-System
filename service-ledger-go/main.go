@@ -19,6 +19,12 @@ func main() {
 		log.Fatal("JWT_SECRET is not set")
 	}
 	http.Handle("/transaction", middleware.JWTAuth(http.HandlerFunc(handlers.HandleTransaction)))
+	
+	http.HandleFunc("/health", func(w http.ResponseWriter, r *http.Request) {
+		w.WriteHeader(http.StatusOK)
+		w.Write([]byte("ok"))
+	})
+	
 	log.Println("Ledger service running on port 4000")
 	log.Fatal(http.ListenAndServe(":4000", nil))
 }

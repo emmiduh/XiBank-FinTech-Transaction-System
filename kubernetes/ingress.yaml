@@ -13,7 +13,7 @@ spec:
               service:
                 name: auth
                 port:
-                number: 3000
+                  number: 3000
           - path: /transaction
             pathType: Prefix
             backend:

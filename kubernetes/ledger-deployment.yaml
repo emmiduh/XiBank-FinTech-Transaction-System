@@ -25,7 +25,10 @@ spec:
                   name: jwt-secret
                   key: secret
             - name: DATABASE_URL
-              value: postgres://postgres:password@postgres:5432/postgres?sslmode=disable
+              valueFrom:
+                secretKeyRef:
+                  name: ledger-db-url
+                  key: db_url
             - name: POSTGRES_PASSWORD
               valueFrom:
                 secretKeyRef:

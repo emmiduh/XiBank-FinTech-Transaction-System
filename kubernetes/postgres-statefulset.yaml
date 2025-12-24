@@ -20,19 +20,9 @@ spec:
           image: postgres:15
           env:
             - name: POSTGRES_PASSWORD
-              value: fintech
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-secret
+                  key: password
           ports:
             - containerPort: 5432
-              name: web
-          volumeMounts:
-            - name: www
-              mountPath: /usr/share/nginx/html
-  volumeClaimTemplates:
-    - metadata:
-        name: www
-      spec:
-        accessModes: ["ReadWriteOnce"]
-        storageClassName: "my-storage-class"
-        resources:
-          requests:
-            storage: 1Gi

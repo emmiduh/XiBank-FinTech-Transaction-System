@@ -25,7 +25,12 @@ spec:
                   name: jwt-secret
                   key: secret
             - name: DATABASE_URL
-              value: postgres://postgres:xibank@postgres:5432/postgres?sslmode=disable
+              value: postgres://postgres:$(POSTGRES_PASSWORD)@postgres:5432/postgres?sslmode=disable
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-secret
+                  key: password
           livenessProbe:
             httpGet:
               path: /health

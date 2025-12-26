@@ -6,7 +6,7 @@ import (
 	"os"
 	"ledger-service/handlers"
 	"ledger-service/middleware"
-
+	"ledger-service/db"
 	"github.com/joho/godotenv"
 )
 
@@ -15,10 +15,36 @@ func main() {
 	if err != nil {
 		log.Println("No .env file found, relying on system environment variables")
 	}
+	
 	if os.Getenv("JWT_SECRET") == "" {
 		log.Fatal("JWT_SECRET is not set")
 	}
-	http.Handle("/transaction", middleware.JWTAuth(http.HandlerFunc(handlers.HandleTransaction)))
+
+	// 1. Initialize Database Connection
+	database, err := db.Connect()
+	if err != nil {
+		log.Fatalf("Could not connect to database: %v", err)
+	}
+	// Verify connection is alive
+	if err := database.Ping(); err != nil {
+		log.Fatalf("Database is unreachable: %v", err)
+	}
+	defer database.Close()
+	log.Println("Successfully connected to Postgres")
+
+	// 2. Initialize Handler with DB dependency
+	ledgerHandler := &handlers.LedgerHandler{
+		DB: database,
+	}
+
+	// 3. Register Routes (Note: we now use ledgerHandler.HandleTransaction)
+	http.Handle("/transaction", middleware.JWTAuth(http.HandlerFunc(ledgerHandler.HandleTransaction)))
+	
+	http.HandleFunc("/health", func(w http.ResponseWriter, r *http.Request) {
+		w.WriteHeader(http.StatusOK)
+		w.Write([]byte("ok"))
+	})
+	
 	log.Println("Ledger service running on port 4000")
 	log.Fatal(http.ListenAndServe(":4000", nil))
 }

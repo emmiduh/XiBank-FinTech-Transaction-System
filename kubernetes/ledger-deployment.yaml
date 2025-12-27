@@ -28,7 +28,7 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: ledger-db-url
-                  key: db_url
+                  key: DATABASE_URL
             - name: POSTGRES_PASSWORD
               valueFrom:
                 secretKeyRef:

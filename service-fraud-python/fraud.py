@@ -6,7 +6,7 @@ app = Flask(__name__)
 def health():
     return jsonify({"status": "ok"}), 200
 
-@app.route('/check', methods=['POST'])
+@app.route('/checkfraud', methods=['POST'])
 def check_fraud():
     data = request.get_json(force=True)
     amount = float(data.get('amount', 0))

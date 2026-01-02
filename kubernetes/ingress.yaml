@@ -5,7 +5,8 @@ metadata:
   namespace: xibank
 spec:
   rules:
-    - http:
+    - host: xibank.local
+      http:
         paths:
           - path: /login
             pathType: Prefix
@@ -14,6 +15,13 @@ spec:
                 name: auth
                 port:
                   number: 3000
+          - path: /checkfraud
+            pathType: Prefix
+            backend:
+              service:
+                name: fraud
+                port:
+                  number: 5000
           - path: /transaction
             pathType: Prefix
             backend:

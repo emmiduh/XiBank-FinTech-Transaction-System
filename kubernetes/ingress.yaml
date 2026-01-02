@@ -4,6 +4,7 @@ metadata:
   name: xibank-ingress
   namespace: xibank
 spec:
+  ingressClassName: nginx
   rules:
     - host: xibank.local
       http:

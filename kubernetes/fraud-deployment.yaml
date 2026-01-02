@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: fraud
-          image: emmiduh93/fraud-service:v1.1
+          image: emmiduh93/fraud-service:v1.0
           ports:
             - containerPort: 3000
           env:

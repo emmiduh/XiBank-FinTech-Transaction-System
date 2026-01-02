@@ -26,3 +26,15 @@ spec:
                   key: password
           ports:
             - containerPort: 5432
+          volumeMounts:
+            - name: postgres-data
+              mountPath: /var/lib/postgresql/data
+  volumeClaimTemplates:
+    - metadata:
+        name: postgres-data
+      spec:
+        accessModes: [ "ReadWriteOnce" ]
+        storageClassName: my-storage-class
+        resources:
+          requests:
+            storage: 10Gi

@@ -107,31 +107,46 @@ spec:
     }
 
     stage('Build & Push Images (Kaniko)') {
-      steps {
-        container('kaniko') {
-          sh '''
-            /kaniko/executor \
-              --context $WORKSPACE/service-auth-node \
-              --dockerfile $WORKSPACE/service-auth-node/Dockerfile \
-              --destination $REGISTRY/auth:$IMAGE_TAG \
-              --cache=true \
-              --cache-repo=$REGISTRY/cache 
-
-            /kaniko/executor \
-              --context $WORKSPACE/service-fraud-python \
-              --dockerfile $WORKSPACE/service-fraud-python/Dockerfile \
-              --destination $REGISTRY/fraud:$IMAGE_TAG \
-              --cache=true \
-              --cache-repo=$REGISTRY/cache 
-
-            /kaniko/executor \
-              --context $WORKSPACE/service-ledger-go \
-              --dockerfile $WORKSPACE/service-ledger-go/Dockerfile \
-              --destination $REGISTRY/ledger:$IMAGE_TAG \
-              --cache=true \
-              --cache-repo=$REGISTRY/cache 
-          '''
-        }
+      parallel {
+          stage('Auth Node') {
+              steps {
+                  container('kaniko') {
+                      sh '''
+                      /kaniko/executor \
+                          --context $WORKSPACE/service-auth-node \
+                          --dockerfile $WORKSPACE/service-auth-node/Dockerfile \
+                          --destination $REGISTRY/auth:$IMAGE_TAG \
+                          --cache=true --cache-repo=$REGISTRY/cache
+                      '''
+                  }
+              }
+          }
+          stage('Fraud Python') {
+              steps {
+                  container('kaniko') {
+                      sh '''
+                      /kaniko/executor \
+                          --context $WORKSPACE/service-fraud-python \
+                          --dockerfile $WORKSPACE/service-fraud-python/Dockerfile \
+                          --destination $REGISTRY/fraud:$IMAGE_TAG \
+                          --cache=true --cache-repo=$REGISTRY/cache
+                      '''
+                  }
+              }
+          }
+          stage('Ledger Go') {
+              steps {
+                  container('kaniko') {
+                      sh '''
+                      /kaniko/executor \
+                          --context $WORKSPACE/service-ledger-go \
+                          --dockerfile $WORKSPACE/service-ledger-go/Dockerfile \
+                          --destination $REGISTRY/ledger:$IMAGE_TAG \
+                          --cache=true --cache-repo=$REGISTRY/cache
+                      '''
+                  }
+              }
+          }
       }
     }
 

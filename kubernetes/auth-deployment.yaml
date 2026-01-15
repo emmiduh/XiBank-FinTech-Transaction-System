@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: auth
-          image: emmiduh93/auth-service:v1.0
+          image: emmiduh93/auth:PLACEHOLDER_TAG
           ports:
             - containerPort: 3000
           env:

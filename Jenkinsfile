@@ -2,7 +2,6 @@ pipeline {
   agent {
     kubernetes {
       cloud 'k8s-azurenode'
-      label 'xibank-ci'
       defaultContainer 'jnlp'
       yaml """
 apiVersion: v1

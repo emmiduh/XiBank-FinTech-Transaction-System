@@ -111,7 +111,6 @@ spec:
           stage('Auth Node') {
               steps {
                   container('kaniko') {
-                      checkout scm
                       sh '''
                       /kaniko/executor \
                           --context $WORKSPACE/service-auth-node \
@@ -125,7 +124,6 @@ spec:
           stage('Fraud Python') {
               steps {
                   container('kaniko') {
-                      checkout scm
                       sh '''
                       /kaniko/executor \
                           --context $WORKSPACE/service-fraud-python \
@@ -139,7 +137,6 @@ spec:
           stage('Ledger Go') {
               steps {
                   container('kaniko') {
-                      checkout scm
                       sh '''
                       /kaniko/executor \
                           --context $WORKSPACE/service-ledger-go \

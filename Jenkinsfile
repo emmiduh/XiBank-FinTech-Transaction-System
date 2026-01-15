@@ -35,9 +35,11 @@ spec:
         subPath: .dockerconfigjson
 
   - name: kubectl
-    image: lachlanevenson/k8s-kubectl:v1.28.0
+    image: bitnami/kubectl:latest
     command: ["sleep"]
     args: ["99d"]
+    securityContext:
+      runAsUser: 0
 
   volumes:
   - name: docker-config

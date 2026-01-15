@@ -31,7 +31,8 @@ spec:
     args: ["99d"]
     volumeMounts:
       - name: docker-config
-        mountPath: /kaniko/.docker
+        mountPath: /kaniko/.docker/config.json
+        subPath: .dockerconfigjson
 
   - name: kubectl
     image: bitnami/kubectl:latest

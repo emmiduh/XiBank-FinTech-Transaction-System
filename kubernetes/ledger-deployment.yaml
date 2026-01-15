@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: ledger
-          image: emmiduh93/ledger-service:v1.0
+          image: emmiduh93/ledger:PLACEHOLDER_TAG
           ports:
             - containerPort: 4000
           env:

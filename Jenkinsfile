@@ -1,6 +1,7 @@
 pipeline {
   agent {
     kubernetes {
+      cloud 'k8s-azurenode'
       label 'xibank-ci'
       defaultContainer 'jnlp'
       yaml """
@@ -114,21 +115,21 @@ spec:
               --dockerfile /home/jenkins/agent/service-auth-node/Dockerfile \
               --destination $REGISTRY/auth:$IMAGE_TAG \
               --cache=true \
-              --cache-repo=$REGISTRY/cache \
+              --cache-repo=$REGISTRY/cache 
 
             /kaniko/executor \
               --context /home/jenkins/agent/service-fraud-python \
               --dockerfile /home/jenkins/agent/service-fraud-python/Dockerfile \
               --destination $REGISTRY/fraud:$IMAGE_TAG \
               --cache=true \
-              --cache-repo=$REGISTRY/cache \
+              --cache-repo=$REGISTRY/cache 
 
             /kaniko/executor \
               --context /home/jenkins/agent/service-ledger-go \
               --dockerfile /home/jenkins/agent/service-ledger-go/Dockerfile \
               --destination $REGISTRY/ledger:$IMAGE_TAG \
               --cache=true \
-              --cache-repo=$REGISTRY/cache \
+              --cache-repo=$REGISTRY/cache 
           '''
         }
       }

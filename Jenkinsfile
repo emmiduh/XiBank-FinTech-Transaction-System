@@ -160,9 +160,9 @@ spec:
              sh "sed -i 's/PLACEHOLDER_TAG/${IMAGE_TAG}/g' kubernetes/*.yaml"
              sh "kubectl apply -n xibank -f kubernetes/"
           }
-      }
+        }
+     }
     }
-
   }
 
   post {

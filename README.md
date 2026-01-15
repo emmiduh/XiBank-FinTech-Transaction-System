@@ -19,36 +19,20 @@ The system is composed of three decoupled microservices and persistent storage:
 | **Ledger Service** | Go (Golang) | `4000` | High-performance transaction processing engine. |
 | **Fraud Service** | Python (Flask) | `5000` | Data analysis service to flag suspicious transactions (> $5000). |
 | **Database** | PostgreSQL | `5432` | Relational storage for transaction logs. |
-| **Cache** | Redis | `6379` | Session caching and fast retrieval. |
 
 ### Directory Structure
 
 ```text
-polyglot-fintech/
+XiBank-FinTech-Transaction-System/
 ├── service-auth-node/     # Node.js Auth Microservice
 ├── service-ledger-go/     # Go Transaction Microservice
 ├── service-fraud-python/  # Python Fraud Detection Microservice
 ├── docker-compose.yml     # Local Orchestration
-├──  kubernetes/            # Kubernetes Manifests
-├──  terraform/             # Infrastructure as Code (IaC)
+├── kubernetes/            # Kubernetes Manifests
+├── terraform/             # Infrastructure as Code (IaC)
+├── Jenkinsfile
 └── README.md
 ```
-You can include your directory structure and the screenshot in README.md using Markdown like this:
-
-# Polyglot Fintech Project
-
-## Directory Structure
-
-
-polyglot-fintech/
-├── service-auth-node/ # Node.js Auth Microservice
-├── service-ledger-go/ # Go Transaction Microservice
-├── service-fraud-python/ # Python Fraud Detection Microservice
-├── docker-compose.yml # Local Orchestration
-├── kubernetes/ # Kubernetes Manifests
-├── terraform/ # Infrastructure as Code (IaC)
-└── README.md
-
 
 ## Screenshot
 ![Project Screenshot]("https://github.com/user-attachments/assets/c1c760db-0f39-4c43-8ea1-0813bc4d7628")

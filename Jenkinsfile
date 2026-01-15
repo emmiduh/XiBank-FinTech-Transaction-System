@@ -95,7 +95,7 @@ spec:
                 sh '''
                   go mod download
                   go test ./... || echo "No tests found"
-                  go build ./...
+                  go build -buildvcs=false ./...
                 '''
               }
             }

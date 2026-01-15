@@ -29,6 +29,9 @@ polyglot-fintech/
 ├── service-ledger-go/     # Go Transaction Microservice
 ├── service-fraud-python/  # Python Fraud Detection Microservice
 ├── docker-compose.yml     # Local Orchestration
- ^t^| ^t^` ^t^` kubernetes/            # Kubernetes Manifests
- ^t^| ^t^` ^t^` terraform/             # Infrastructure as Code (IaC)
+├──  kubernetes/            # Kubernetes Manifests
+├──  terraform/             # Infrastructure as Code (IaC)
 └── README.md
+
+<img width="1272" height="681" alt="image" src="https://github.com/user-attachments/assets/c1c760db-0f39-4c43-8ea1-0813bc4d7628" />
+

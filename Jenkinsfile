@@ -110,25 +110,28 @@ spec:
         container('kaniko') {
           sh '''
             /kaniko/executor \
-              --context service-auth-node \
-              --dockerfile service-auth-node/Dockerfile \
+              --context /home/jenkins/agent/service-auth-node \
+              --dockerfile /home/jenkins/agent/service-auth-node/Dockerfile \
               --destination $REGISTRY/auth:$IMAGE_TAG \
               --cache=true \
-              --cache-repo=$REGISTRY/cache
+              --cache-repo=$REGISTRY/cache \
+	      --docker-config /kaniko/.docker
 
             /kaniko/executor \
-              --context service-fraud-python \
-              --dockerfile service-fraud-python/Dockerfile \
+              --context /home/jenkins/agent/service-fraud-python \
+              --dockerfile /home/jenkins/agent/service-fraud-python/Dockerfile \
               --destination $REGISTRY/fraud:$IMAGE_TAG \
               --cache=true \
-              --cache-repo=$REGISTRY/cache
+              --cache-repo=$REGISTRY/cache \
+              --docker-config /kaniko/.docker
 
             /kaniko/executor \
-              --context service-ledger-go \
-              --dockerfile service-ledger-go/Dockerfile \
+              --context /home/jenkins/agent/service-ledger-go \
+              --dockerfile /home/jenkins/agent/service-ledger-go/Dockerfile \
               --destination $REGISTRY/ledger:$IMAGE_TAG \
               --cache=true \
-              --cache-repo=$REGISTRY/cache
+              --cache-repo=$REGISTRY/cache \
+              --docker-config /kaniko/.docker
           '''
         }
       }

@@ -32,6 +32,24 @@ polyglot-fintech/
 ├──  kubernetes/            # Kubernetes Manifests
 ├──  terraform/             # Infrastructure as Code (IaC)
 └── README.md
+```
+You can include your directory structure and the screenshot in README.md using Markdown like this:
 
-<img width="1272" height="681" alt="image" src="https://github.com/user-attachments/assets/c1c760db-0f39-4c43-8ea1-0813bc4d7628" />
+# Polyglot Fintech Project
+
+## Directory Structure
+
+
+polyglot-fintech/
+├── service-auth-node/ # Node.js Auth Microservice
+├── service-ledger-go/ # Go Transaction Microservice
+├── service-fraud-python/ # Python Fraud Detection Microservice
+├── docker-compose.yml # Local Orchestration
+├── kubernetes/ # Kubernetes Manifests
+├── terraform/ # Infrastructure as Code (IaC)
+└── README.md
+
+
+## Screenshot
+![Project Screenshot]("https://github.com/user-attachments/assets/c1c760db-0f39-4c43-8ea1-0813bc4d7628")
 

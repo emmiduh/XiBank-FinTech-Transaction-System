@@ -115,7 +115,6 @@ spec:
               --destination $REGISTRY/auth:$IMAGE_TAG \
               --cache=true \
               --cache-repo=$REGISTRY/cache \
-	      --docker-config /kaniko/.docker
 
             /kaniko/executor \
               --context /home/jenkins/agent/service-fraud-python \
@@ -123,7 +122,6 @@ spec:
               --destination $REGISTRY/fraud:$IMAGE_TAG \
               --cache=true \
               --cache-repo=$REGISTRY/cache \
-              --docker-config /kaniko/.docker
 
             /kaniko/executor \
               --context /home/jenkins/agent/service-ledger-go \
@@ -131,7 +129,6 @@ spec:
               --destination $REGISTRY/ledger:$IMAGE_TAG \
               --cache=true \
               --cache-repo=$REGISTRY/cache \
-              --docker-config /kaniko/.docker
           '''
         }
       }
